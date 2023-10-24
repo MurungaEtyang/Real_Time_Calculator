@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+    <style>
+        input[type="text"] {
+            width: 200px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+<h1>Real-Time Calculator</h1>
+<input type="text" id="display" oninput="calculateResult()" placeholder="Enter an expression">
+
+<br>
+<div id="result">Result: </div>
+<br>
+<button onclick="appendToDisplay('7')">7</button>
+<button onclick="appendToDisplay('8')">8</button>
+<button onclick="appendToDisplay('9')">9</button>
+<button onclick="clearDisplay()">C</button>
+<br>
+<button onclick="appendToDisplay('4')">4</button>
+<button onclick="appendToDisplay('5')">5</button>
+<button onclick="appendToDisplay('6')">6</button>
+<button onclick="appendToDisplay('+')">+</button>
+<br>
+<button onclick="appendToDisplay('1')">1</button>
+<button onclick="appendToDisplay('2')">2</button>
+<button onclick="appendToDisplay('3')">3</button>
+<button onclick="appendToDisplay('-')">-</button>
+<br>
+<button onclick="appendToDisplay('0')">0</button>
+<button onclick="appendToDisplay('*')">*</button>
+<button onclick="appendToDisplay('/')">/</button>
+<button onclick="appendToDisplay('%')">%</button>
+<button onclick="calculateResult()">=</button>
+
+<script >
+    function appendToDisplay(value) {
+        document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+
+    function calculateResult() {
+        const displayValue = document.getElementById('display').value;
+        try {
+            const result = eval(displayValue); // Use eval to perform the calculation
+            document.getElementById('result').textContent = `Result: ${result}`;
+        } catch (error) {
+            document.getElementById('result').textContent = 'Result: Error';
+        }
+    }
+</script>
+</body>
+</html>
